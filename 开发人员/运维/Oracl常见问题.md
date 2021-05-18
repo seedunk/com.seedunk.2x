@@ -1,0 +1,2 @@
+# Oracl常见问题
+1. 导入数据时找不到表空间:CREATE TABLESPACE ESOFT DATAFILE ‘ESOFT’ SIZE 400M
