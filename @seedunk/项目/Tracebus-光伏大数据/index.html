@@ -1,0 +1,271 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href=".assets/css/layout.css" type="text/css" rel="stylesheet">
+<link href=".assets/css/style.css" type="text/css" rel="stylesheet">
+<link href=".assets/css/font.css" type="text/css" rel="stylesheet"> 
+<style>
+.tit2{ font-size: 32px; font-weight: normal; padding:12px 0;
+       color: #666666;}
+.page{position: relative; }
+.bg{
+  min-height:800px;
+ display:block;
+ width: 100%;
+ position: fixed;top:0;
+     z-index:0;
+     background: #8191a4 url(.assets/images/bg.jpg) no-repeat;
+     }
+    
+._head{  position: fixed;top:0;
+         width: 100%;z-index:999999;
+         padding:6px 0;
+         
+         }
+._head >ul{  width:980px;margin:0 auto;}
+.inner{ padding:20px 10px;}
+.panel-wrapper {
+position: relative;
+
+z-index:99999;
+border-radius: 4px;
+background: #fff; 
+-webkit-border-radius: 4px;
+-webkit-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+-moz-box-shadow: rgba(0,0,0,0.3) 0 1px 3px;
+  
+}
+.mt120{ margin-top:120px;display: block;  }
+
+   .t2{color: #333333;margin-top:8px;}
+   .t2 h4{font-weight: normal;font-size:16px;}
+   .t2 .t3{font-weight: normal;padding:2px 0;font-size: 14px;}
+.title{ 
+    margin-top:30px;
+    font-size: 32px; font-weight: normal; 
+     color: #333333;
+    text-align: center;}
+    .title-more{
+    font-size: 22px; font-weight: normal; 
+     color: #666666;
+    text-align: center;
+    }
+  .p2{background:#f0f0f0;}
+  .p3{background:#fff;min-height:220px;}
+  .gn{width:480px;padding:12px; padding-left:30px;}
+  .gn-img{position: absolute;
+          right: 4%;
+          top: 6%;}
+        
+</style>
+<script type="text/javascript" src=".assets/js/jquery190.js"></script>
+<script type="text/javascript" src=".assets/js/jquery190p1.js"></script>
+ <script type="text/javascript" src=".assets/js/jquery.mousewheel.js"></script>
+  
+<script>
+   $(function(){
+	 
+	// $("css").asset("/com/worstudio/layout.css","http://import.com");
+	 // $("css").asset("/net/fishstudio/style.css",app_site);
+	 
+	 $("#app").fadeIn(2000);
+  });
+	$(function() {
+					  var windowHeight =  $(window).height();
+					  
+						var aTop = [];
+						$(".page").each(function(index,e){
+							aTop.push(e.offsetTop);
+						});
+						iPagerCount = 5; 
+						iPageNumber = 0;
+
+						var sTop = $(window).scrollTop();
+						if (sTop >= aTop[0] && sTop < aTop[1]) {
+							iPageNumber = 0;
+						}
+						if (sTop >= aTop[1] && sTop < aTop[2]) {
+							iPageNumber = 1;
+						}
+						if (sTop >= aTop[2] && sTop < aTop[3]) {
+							iPageNumber = 2;
+						}
+						if (sTop >= aTop[3] && sTop < aTop[4]) {
+							iPageNumber = 3;
+						}
+						if (sTop >= aTop[4]) {
+							iPageNumber = 4;
+						}
+
+						 
+						$(".interface").click(function() {
+							pageDown();
+						});
+						//滑动滚动条翻屏效果
+						$("html,body").bind(
+								"mousewheel",
+								function(event, intDelta) {
+									var $this = $(this), timeoutId = $(this)
+											.data('timeoutId');
+									if (timeoutId) {
+										clearTimeout(timeoutId);
+									}
+									$this.data('timeoutId', setTimeout(
+											function() {
+												intDelta > 0 ? pageUp()
+														: pageDown();
+												$this.removeData('timeoutId');
+												$this = null;
+											}, 150));
+									return false;
+								});
+
+						window.onresize = function() {
+							windowHeight = $(window).height();
+							aTop = [];
+							$(".page").each(function(index,e){
+								aTop.push(e.offsetTop);
+							}); 
+							slide(aTop[iPageNumber]);
+						};
+
+						 function pageUp() {
+							iPageNumber = iPageNumber <= 0 ? 0
+									: iPageNumber - 1;
+							 
+							aTop = [];
+							$(".page").each(function(index,e){
+								aTop.push(e.offsetTop);
+							});
+							slide(aTop[iPageNumber]);
+						}
+
+						function pageDown() {
+							iPageNumber = iPageNumber >= iPagerCount - 1 ? iPageNumber
+									: iPageNumber + 1;
+							 
+							aTop = [];
+							$(".page").each(function(index,e){
+								aTop.push(e.offsetTop);
+							});
+							slide(aTop[iPageNumber]);
+						}
+
+						function slide(length) {
+							$("body,html").stop().animate({
+								scrollTop : length
+							}, 800, 'easeOutExpo');
+						}
+
+						//扩展动画
+						$.extend(
+								 $.easing,
+										{
+											easeOutExpo : function(e, f, a, h,
+													g) {
+												return (f == g) ? a + h : h
+														* (-Math.pow(2, -10 * f
+																/ g) + 1) + a
+											},
+											easeOutBounce : function(x, t, b,
+													c, d) {
+												if ((t /= d) < (1 / 2.75)) {
+													return c * (7.5625 * t * t)
+															+ b;
+												} else if (t < (2 / 2.75)) {
+													return c
+															* (7.5625
+																	* (t -= (1.5 / 2.75))
+																	* t + .75)
+															+ b;
+												} else if (t < (2.5 / 2.75)) {
+													return c
+															* (7.5625
+																	* (t -= (2.25 / 2.75))
+																	* t + .9375)
+															+ b;
+												} else {
+													return c
+															* (7.5625
+																	* (t -= (2.625 / 2.75))
+																	* t + .984375)
+															+ b;
+												}
+											}
+										});
+
+					});
+</script>
+   
+</head>
+<body id="app">
+<script>
+$("#app").hide();
+</script>
+<div class="bg"></div>
+<div class="_head">
+          <ul class="hbox">
+               <li><a href=" ">首页</a></li> 
+          </ul> 
+         <div class="clearfix"></div>
+</div>  
+<div id="wrapper" class="panel-wrapper">
+      <span class="mt120"></span>
+       <div class="page">
+		        <div class="inner">
+					    <h3 class="title">光伏应用-SOLARFACE</h3>
+					     <p class="title-more">来自FACETHINGS</p>
+			    </div>
+		 </div> 
+		<div class="app_introduce page p2">
+			  <img src=".assets/images/s006.jpg">
+			   <div class="relevant">
+				 <div class="r-words">
+					 <h3 class="tit2">概况</h3>
+					 <div class="t1">SolarDash是RegelTEK在电能领域的典型应用。它将分布世界各地的逆变器数据以电站为单位进行有效管理，提供报警推送、历史追溯、产能报表等功能</div>
+					 <div class="t1">
+						将光伏电站运作过程中涉及人员进行了逻辑分组，使得电站运作中各个环节逻辑清楚责任明确。有效提高了对突发事件的相应速度，减少产生损失。
+                     </div>
+				 </div>
+			  </div>
+		</div>
+		<div class="page p3">
+			 <div class="gn">
+				     <h3 class="tit2">功能</h3>
+					 <div class="t2">
+						<h4>海量数据管理</h4>
+						<p class="t3">海量数据被有逻辑的、安全的、集中存储在云端，供用户随时调阅。</p>
+				  	</div>
+					<div class="t2">
+						<h4>完善的报表系统</h4>
+						<p class="t3">数据云计算，以电站为单位打印科学报表。并实现了多种格式输出。</p>
+					</div>
+					<div class="t2">
+						 <h4>异常实时报警</h4>
+					 	 <p class="t3">光伏设备会受温度、退化等客观因素，造成产能效率下降，对关键数据监控并及时推送给相关工作人员。</p>
+					</div> 
+			</div>
+			 <img class="gn-img" src=".assets/images/s001.jpg"> 
+			  <div class="clearfix"></div>
+		</div>
+		<div class="footer page">
+			<div class="f-contact">
+				<h2 class="tltle">联系我们</h2>
+				 <div class="about">Facethings是一套专业的物联网设备监控方案，它从现场设备监控这一基本需求出发，提供了一套安全、稳定、高效的解决方案。实现在不同行业中设备监控应用的快速部署。它屏蔽了不同硬件设备联网条件的差异，对设备的动静态信息进行了有效分析与管理。现已在电能及工业领域得到应用。</div>
+				 <div class="T_contact">
+					 <a><img src=".assets/images/bot_icon1.jpg">
+						<p class="email">xirifei@live.com</p>
+					 </a> 
+					 <a> 
+					  <img src=".assets/images/bot_icon4.jpg">
+					  	  <p class="email">快速联系</p>
+					 </a>  
+					  <a> 
+					    <img src=".assets/images/bot_icon2.jpg">
+					  	<p class="email">敬请期待</p>
+					 </a>  
+				</div>
+			</div>
+		</div>
+    </div> 
+
+</body></html>
