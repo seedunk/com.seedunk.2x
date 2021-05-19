@@ -1,4 +1,4 @@
-# SEEDUNK
+# 2X
 * [推荐](#album.banner)<br>
   * ![乔布斯在斯坦福大学的演讲](/@Jobs/侧面.jpg)<br>
     [这是苹果公司和Pixar动画工作室的CEO Steve Jobs于2005年6月12号在斯坦福大学的毕业典礼上面的演讲稿。](/@Jobs/在斯坦福大学的演讲/README.md)
