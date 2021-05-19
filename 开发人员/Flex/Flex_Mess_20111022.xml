@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="GB2312"?>
+<Root>
+<Index>
+<Txt id='001' name='鼠标停留和移动事件' condition='Flex_鼠标 _事件'/>
+<Txt id='002' name='DataGrid动态创建  ' condition='Flex_控件'/>
+</Index>
+<Article id='001' name='鼠标停留和移动事件'>
+    <Name>鼠标停留和移动事件</Name>
+    <Txt>鼠标停留事件函数</Txt><Txt>Button:mouseOver="btn1_mouseOver(event)" mouseOut="btn1_mouseOut(event)"</Txt><Txt>鼠标停留事件函数</Txt><Txt>private function btn1_mouseOver(event:Event):void{功能代码}</Txt><Txt>鼠标移除事件函数</Txt><Txt>private function btn1_mouseOut(event:Event):void{功能代码}</Txt>
+</Article>
+<Article id='002' name='DataGrid动态创建 '>
+    <Name>DataGrid动态创建</Name>
+    <Txt>var dg:DataGrid = new DataGrid(); </Txt>
+<Txt>dg.id = “myDG”; // 设定id </Txt>
+<Txt>dg.width = 400; // 设定宽度 </Txt>
+<Txt>………… // 其它属性 </Txt>
+<Txt>2、添加进容器</Txt>
+<Txt>vbox.addChild(dg); </Txt>
+<Txt>3、创建DataGridColumn，可以根据你的输入的列数做循环，行数为rowcount</Txt>
+<Txt>var column1:DataGridColumn = new DataGridColumn(); </Txt>
+<Txt>column1.headerText = “column1″; </Txt>
+<Txt>4、将DataGridColumn添加到datagrid</Txt>
+<Txt>dg.columns = dg.columns.concat(column1);  </Txt>
+</Article>
+</Root>
