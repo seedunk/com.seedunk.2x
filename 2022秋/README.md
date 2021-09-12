@@ -1,4 +1,4 @@
-![](Banner.jpg#img.banner "预告")
+![](Banner.jpg#custom.banner "预告")
 
 * [2022年8月预告](#album.list)
   * ![](202108-预告/预告.png "预告图")
