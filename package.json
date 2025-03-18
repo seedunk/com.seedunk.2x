@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "themekit-js": "^1.503.1820", 
+    "vite-plugin-remote-assets": "^0.4.1"
+  }
+}
