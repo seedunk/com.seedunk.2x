@@ -1,7 +1,7 @@
 import { defineConfig } from 'themekit-js'
 
 import RemoteAssets from 'vite-plugin-remote-assets'
-const siteBase="/2x/"
+const siteBase="/com.seedunk.2x/" 
 export default defineConfig({ 
   vite:{ 
      plugins:[ 
